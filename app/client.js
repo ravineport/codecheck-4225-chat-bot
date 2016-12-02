@@ -1,6 +1,6 @@
 'use strict';
 
-var ws = new WebSocket('ws://localhost:3000');
+var ws = new WebSocket('ws://localhost:3000/websocket');
 
 $(function () {
   $('form').submit(function(){
@@ -14,6 +14,8 @@ $(function () {
   });
   ws.onmessage = function(msg){
     var resp = JSON.parse(msg.data);
+    console.log(resp);
+    console.log(resp.text);
     $('#messages')
       .append($('<li>')
       .append($('<span class="message">').text(resp.text)));
